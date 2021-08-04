@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.zouyq.cmdtools.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.zouyq.cmdtools.MyBundle
 
 class MyApplicationService {
 
