@@ -1,19 +1,28 @@
 <idea-plugin>
-    <id>org.jetbrains.plugins.template</id>
-    <name>Template</name>
-    <vendor>JetBrains</vendor>
+    <id>com.github.zouyq.cmdTools</id>
+    <name>CmdTools</name>
+    <vendor>zouyq</vendor>
+
+    You cannot change the plugin ID. The ID of the edited plugin is com.github.zouyq.cmdTools, but you uploaded a plugin with the ID com.github.zouyq.
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
-        <projectService serviceImplementation="org.jetbrains.plugins.template.services.MyProjectService"/>
-    </extensions>
+    <actions>
+        <action id="openAction" class="com.github.zouyq.actions.OpenExplorerAction" />
+        <action id="cmdAction" class="com.github.zouyq.actions.OpenCmdAction" />
+        <action id="killAction" class="com.github.zouyq.actions.KillJavaAction" />
 
-    <applicationListeners>
-        <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+
+        <group id="CMDTools.Actions">
+            <separator/>
+            <reference ref="openAction"/>
+            <reference ref="cmdAction"/>
+            <reference ref="killAction"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="HelpTopics"/>
+        </group>
+    </actions>
+
 </idea-plugin>
